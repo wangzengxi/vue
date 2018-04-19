@@ -1,0 +1,30 @@
+{
+	"code": "0",
+	"message": "请求成功!",
+	"list": [
+		{
+			"name": "banner-1",
+			"img": "https://i3.meishichina.com/attachment/magic/2018/04/02/20180402152263929517113.jpg",
+			"url": "www.baidu.com"
+		},{
+			"name": "banner-2",
+			"img": "https://i3.meishichina.com/attachment/magic/2018/03/26/20180326152203322171213.jpg",
+			"url": "www.baidu.com"
+		},{
+			"name": "banner-3",
+			"img": "https://i3.meishichina.com/attachment/magic/2018/03/23/20180323152177346580913.jpg",
+			"url": "www.baidu.com"
+		},{
+			"name": "banner-4",
+			"img": "https://i3.meishichina.com/attachment/magic/2018/03/12/20180312152082291290613.jpg",
+			"url": "www.baidu.com"
+		},{
+			"name": "banner-5",
+			"img": "https://i3.meishichina.com/attachment/magic/2018/04/11/20180411152341525679613.jpg",
+			"url": "www.baidu.com"
+		},{
+			"name": "banner-6",
+			"img": "https://i3.meishichina.com/attachment/magic/2018/04/08/20180408152315307979813.jpg",
+			"url": "www.baidu.com"
+		}]
+}

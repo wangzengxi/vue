@@ -1,0 +1,15 @@
+{
+	"code": "0",
+	"message": "请求成功",
+	"list": [
+		{
+			"goodsId": "12",
+			"number": "1",
+		},{
+			"goodsId": "9",
+			"number": "1",
+		},{
+			"goodsId": "11",
+			"number": "1",
+		}]
+}
