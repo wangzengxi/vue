@@ -1,45 +1,47 @@
 <template>
-	<div class="order">
-		<header class="bar bar-nav">
-			<span @click="back" class="fl iconfont icon-back_android"></span>
-			<h1 class="title">订单管理</h1>
-			<span @click="refresh" class="fr iconfont icon-refresh"></span>
-		</header>
-		<div class="content">
-			<ul class="nav-tab-top" @click="orderContShow">
-				<li data-index="0" class="cur">全部</li>
-				<li data-index="1">待支付</li>
-				<li data-index="2">待发货</li>
-				<li data-index="3">待确认</li>
-				<li data-index="4">待评价</li>
-			</ul>
-			<div class="scroll-wrap">
-				<section class="order-cont" style="display:block;">
-					<ul class="order">
-						<li class="card" v-for="list in orders">
-							<h4>{{list.orderId}}<span class="fr">{{list.orderState}}</span></h4>
-							<div class="order-goods" v-for="goods in list.dishes">
-								<div class="goods-pic">
-									<img v-bind:src="goods.img" alt="">
+	<div class="page-group order">
+		<div class="page">
+			<header class="bar bar-nav">
+				<span @click="back" class="fl iconfont icon-back_android"></span>
+				<h1 class="title">订单管理</h1>
+				<span @click="refresh" class="fr iconfont icon-refresh"></span>
+			</header>
+			<div class="content">
+				<ul class="nav-tab-top" @click="orderContShow">
+					<li data-index="0" class="cur">全部</li>
+					<li data-index="1">待支付</li>
+					<li data-index="2">待发货</li>
+					<li data-index="3">待确认</li>
+					<li data-index="4">待评价</li>
+				</ul>
+				<div class="scroll-wrap">
+					<section class="order-cont" style="display:block;">
+						<ul class="order">
+							<li class="card" v-for="list in orders">
+								<h4>{{list.orderId}}<span class="fr">{{list.orderState}}</span></h4>
+								<div class="order-goods" v-for="goods in list.dishes">
+									<div class="goods-pic">
+										<img v-bind:src="goods.img" alt="">
+									</div>
+									<div class="goods-info">
+										{{goods.name}}
+									</div>
+									<div class="goods-pay">
+										<span>{{goods.price}}</span>
+									</div>
 								</div>
-								<div class="goods-info">
-									{{goods.name}}
+								<div class="o-tab-btn">
+									<span>删除订单</span>
+									<span>追加评价</span>
 								</div>
-								<div class="goods-pay">
-									<span>{{goods.price}}</span>
-								</div>
-							</div>
-							<div class="o-tab-btn">
-								<span>删除订单</span>
-								<span>追加评价</span>
-							</div>
-						</li>
-					</ul>
-				</section>
-				<section class="order-cont">2</section>
-				<section class="order-cont">3</section>
-				<section class="order-cont">4</section>
-				<section class="order-cont">5</section>
+							</li>
+						</ul>
+					</section>
+					<section class="order-cont">2</section>
+					<section class="order-cont">3</section>
+					<section class="order-cont">4</section>
+					<section class="order-cont">5</section>
+				</div>
 			</div>
 		</div>
 	</div>

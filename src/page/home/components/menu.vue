@@ -1,8 +1,11 @@
 <template>
-	<div class="menu">
+	<aside class="sidebar">
 		<div class="user" style="background:url(http://img.alicdn.com/tfs/TB1gCf4SpXXXXaPaXXXXXXXXXXX-608-344.png_960x960Q50s50.jpg_.webp)">
 			<img src="http://wwc.alicdn.com/avatar/getAvatar.do?userNick=&width=128&height=128&type=sns&_input_charset=UTF-8" alt="">
-			<div class="user-login">
+			<div class="user-login" v-if="this.token">
+				<p><span>{{this.name}}</span><a class="fr">退出登录</a></p>
+			</div>
+			<div class="user-login" v-else>
 				<router-link :to='{name:"Login"}'>登录</router-link>
 				<span>|</span>
 				<router-link :to='{name:"Register"}'>注册</router-link>
@@ -20,14 +23,21 @@
 				<p :to='{name:""}'><span class="iconfont icon-help_fill"></span>在线帮助<span class="fr iconfont icon-down_fill"></span></p>
 			</div>
 		</nav>
-	</div>
+	</aside>
 </template>
 
 <script>
 export default {
   data () {
     return {
+
     }
+  },
+  props:['name', 'token'],
+  mounted (){
+  },
+  methods: {
+
   }
 }
 </script>

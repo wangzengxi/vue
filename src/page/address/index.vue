@@ -1,35 +1,40 @@
 <template>
-	<div class="order">
-		<header class="bar bar-nav">
-			<span @click="back" class="fl iconfont icon-back_android"></span>
-			<h1 class="title">收货地址管理</h1>
-			<span @click="refresh" class="fr iconfont icon-refresh"></span>
-		</header>
-		<div class="content">
-			<section class="address-list">
-				<div v-for="list in addresses" :class="list.code == 0 ? 'address-info active' : 'address-info'" >
-					<div class="font-1">
-						<label>收货人：</label>
-						<label name="name">{{list.name}}</label>
-						<label name="phone">{{list.phone}}</label>
+	<div class="page-group address">
+		<div class="page">
+			<header class="bar bar-nav">
+				<span @click="back" class="fl iconfont icon-back_android"></span>
+				<h1 class="title">收货地址管理</h1>
+				<span @click="refresh" class="fr iconfont icon-refresh"></span>
+			</header>
+			<div class="content">
+				<section class="address-list">
+					<div v-for="(value,index) in addresses" @click="selectAddress(index)" :class="value.code == 0 ? 'address-info active' : 'address-info'" >
+						<div class="font-1">
+							<label>收货人：</label>
+							<label name="name">{{value.name}}</label>
+							<label name="phone">{{value.phone}}</label>
+						</div>
+						<div class="font-2">
+							<label>收货地址：</label>
+							<label name="address">{{value.address}}</label>
+						</div>
+						<label class="right-icon iconfont icon-check"></label>
 					</div>
-					<div class="font-2">
-						<label>收货地址：</label>
-						<label name="address">{{list.address}}</label>
-					</div>
-					<label class="right-icon iconfont icon-check"></label>
-				</div>
-			</section>
+				</section>
+			</div>
+			<footer class="bar bar-footer"><input type="button" @click="addShow" class="open-panel button b-ff5000" value="新增地址"></footer>
 		</div>
-		<footer class="bar bar-footer"><input type="button" class="button b-ff5000" value="新增地址"></footer>
+		<v-edit :isAddShow="isAddShow" @addHide="addShow"></v-edit>
 	</div>
 </template>
 
 <script>
 import { mapState, mapActions} from 'vuex'
+import vEdit from './components/edit.vue'
 export default {
   data () {
     return {
+      isAddShow: false
     }
   },
   computed: {
@@ -38,7 +43,7 @@ export default {
     ])
   },
   mounted (){
-  	this.getAddress()
+  	this.getAddress();
   },
   methods: {
     ...mapActions([
@@ -49,13 +54,29 @@ export default {
     },
     refresh () {
       this.$router.go(0);
+    },
+    selectAddress (index) {
+      let list = document.querySelectorAll('.address-info');
+      for (var i = 0; i < list.length; i++) {
+      	list[i].classList.remove('active');
+      }
+      list[index].classList.add('active');
+    },
+    addShow(){
+      this.isAddShow = !this.isAddShow;
     }
+  },
+  components: {
+  	'v-edit': vEdit
   }
 }
 </script>
  
 <style scoped>
 header{
+}
+.content{
+	padding-bottom: 3rem;
 }
 .address-list{
 	margin-top: 1rem;
@@ -66,6 +87,9 @@ header{
 	background: #fff;
 	border-top: 1px solid #ccc;
 	color:#666;
+}
+.address-list .address-info:first-child{
+	border:none;
 }
 .address-info.active{
 	background: #5e6b85;
@@ -104,4 +128,5 @@ label[name="phone"]{
 footer input{
 	height: 100%;
 }
+
 </style>

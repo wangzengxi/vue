@@ -1,18 +1,20 @@
 <template>
-	<div class="order">
-		<header class="bar bar-nav">
-			<span @click="back" class="fl iconfont icon-back_android"></span>
-			<h1 class="title">购物车</h1>
-			<span @click="refresh" class="fr iconfont icon-refresh"></span>
-		</header>
-		<div class="content">
-			
-		</div>
-		<footer class="bar bar-footer">
-			总计：￥99.00
-			<input type="button" class="fr button checkOut" value="结算">
-		</footer>
-	</div>
+    <div class="page-group order">
+        <div class="page">
+            <header class="bar bar-nav">
+                <span @click="back" class="fl iconfont icon-back_android"></span>
+                <h1 class="title">购物车</h1>
+                <span @click="refresh" class="fr iconfont icon-refresh"></span>
+            </header>
+            <div class="content">
+        
+            </div>
+            <footer class="bar bar-footer">
+                总计：￥99.00
+                <input type="button" class="fr button checkOut" value="结算">
+            </footer>
+        </div>
+	  </div>
 </template>
 
 <script>

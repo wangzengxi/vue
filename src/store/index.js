@@ -1,3 +1,4 @@
+'use strict'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import actions from './actions.js'
@@ -11,7 +12,10 @@ const state = {
 	newDishes: [],
 	orders: [],
 	addresses: [],
-	sorts: []
+	sorts: [],
+	// userInfo: null,
+	name: null,
+	token: null
 }
 
 export default new Vuex.Store({

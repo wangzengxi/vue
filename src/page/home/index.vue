@@ -1,5 +1,5 @@
 <template>
-    <div class="page-group">
+    <div class="page-group home">
   	    <div class="page">
   		      <header class="bar bar-nav">
 			          <span class="iconfont icon-menu fl open-panel"></span>
@@ -14,6 +14,7 @@
                 <v-new></v-new>
                 <v-ingredients></v-ingredients>
                 <v-gotop></v-gotop>
+                <v-loading :show="loadingShow"></v-loading> 
         		</div>
 		        <footer>
               
@@ -23,12 +24,13 @@
   	    <div class="panel-overlay"></div>
         <!-- 侧栏菜单 -->
         <div class="panel panel-left panel-reveal">
-    	      <v-menu></v-menu>
+    	      <v-menu :name="name" :token="token"></v-menu>
         </div>
     </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import vGotop from '../../components/gotop'
 import vSwiper from './components/swiper'
 import vNav from './components/nav'
@@ -36,8 +38,27 @@ import vNew from './components/new'
 import vIngredients from './components/ingredients'
 import vMenu from './components/menu'
 import vPosition from '../../components/position'
+import vLoading from '../../components/loading'
 
 export default {
+  data () {
+    return {
+      loadingShow: false
+    }
+  },
+  computed: {
+    ...mapState([
+      'name',
+      'token'
+    ])
+  },
+  mounted (){
+    document.querySelector('body').classList.remove('with-panel-left-reveal');
+  },
+  methods: {
+    ...mapActions([
+    ])
+  },
   components: {
     'v-swiper': vSwiper,
     'v-nav': vNav,
@@ -45,18 +66,8 @@ export default {
     'v-ingredients': vIngredients,
     'v-gotop': vGotop,
     'v-menu': vMenu,
-    'v-position': vPosition
-  },
-  data () {
-    return {
-      // isShow: false
-    }
-  },
-  mounted (){
-    document.querySelector('body').classList.remove('with-panel-left-reveal');
-  },
-  methods: {
-
+    'v-position': vPosition,
+    'v-loading': vLoading
   }
 }
 </script>
@@ -68,7 +79,6 @@ header{
 	height: 3rem;
 	line-height: 3rem;
 	color:#fff;
-  box-shadow: 0px 0px 1rem rgba(0, 0, 0, .4);
 }
 .title{
 	color:#fff;

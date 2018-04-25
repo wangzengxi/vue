@@ -1,22 +1,24 @@
 <template>
-	<div class="sort">
-		<header class="bar bar-nav">
-  			<span @click="back" class="fl iconfont icon-back_android"></span>
-			<ul class="sort-title">
-				<li v-for="(value,index) in sort" @click="getSort(index)" :class="index == 0 ? 'active' : 'ds'">{{value}}</li>
-			</ul>
-		</header>
-		<div class="content">
-			<ul class="sorts">
-				<li v-for="list in sorts" :data-id="list.id">
-					<img :src="list.img" :alt="list.name">
-					<p>{{list.name}}</p>
-				</li>
-			</ul>
-        </div>
-		<footer>
-              
-        </footer>
+	<div class="page-group sort">
+		<div class="page">
+			<header class="bar bar-nav">
+	  			<span @click="back" class="fl iconfont icon-back_android"></span>
+				<ul class="sort-title">
+					<li v-for="(value,index) in sort" @click="getSort(index)" :class="index == 0 ? 'active' : 'ds'">{{value}}</li>
+				</ul>
+			</header>
+			<div class="content">
+				<ul class="sorts">
+					<li v-for="list in sorts" :data-id="list.id">
+						<img :src="list.img" :alt="list.name">
+						<p>{{list.name}}</p>
+					</li>
+				</ul>
+	        </div>
+			<footer>
+	              
+	        </footer>
+		</div>
 	</div>
 </template>
 
@@ -35,6 +37,7 @@ export default {
   },
   mounted () {
     this.getSortData(0)
+    // document.querySelector('body').classList.remove('with-panel-left-reveal');
   },
   methods: {
     ...mapActions([
@@ -57,7 +60,7 @@ export default {
 
 <style scoped>
 header{overflow: hidden;}
-header a:first-child{
+header span:first-child{
 	box-shadow: 2px 0 8px rgba(100,100,100,.3)
 }
 .sort-title{
