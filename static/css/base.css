@@ -250,7 +250,7 @@ body.with-panel-left-reveal .panel-overlay,body.with-panel-left-reveal .panel-re
   position: relative;
   overflow: hidden;
   background: #fff;
-  margin:1rem 0.5rem;
+  margin:.8rem 0.6rem;
   border-radius: .35rem;
   box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
 }
@@ -531,7 +531,7 @@ input[type="password"] {
   height: 2.5rem;
   background: #fff;
   border: 1px solid #c4c7a0;
-  border-radius: .35rem;
+  border-radius: .15rem;
   font-size: 1rem;
 }
 
@@ -548,7 +548,7 @@ input[type="password"] {
   text-decoration: none;
   text-align: center;
   display: block;
-  border-radius: 0.35rem;
+  border-radius: 0.15rem;
   line-height: 2.5rem;
   box-sizing: border-box;
   -webkit-appearance: none;

@@ -1,7 +1,7 @@
 'use strict'
 import {
 	GET_SWIPER,
-	GET_NEW_DISHES,
+	GET_GOODSAREA,
 	GET_ORDER,
 	GET_ADDRESS,
 	GET_SORT_DATA,
@@ -14,8 +14,8 @@ export default {
 	[GET_SWIPER] (state,list){
 		state.swipers = list;
 	},
-	[GET_NEW_DISHES] (state,list){
-		state.newDishes = list;
+	[GET_GOODSAREA] (state,data){
+		state.goodsArea = data;
 	},
 	[GET_ORDER] (state,list){
 		state.orders = list;
@@ -26,9 +26,9 @@ export default {
 	[GET_SORT_DATA] (state,list){
 		state.sorts = list;
 	},
-	// [RECORD_USERINFO] (state,data){
-	// 	state.userInfo = data;
-	// },
+	[RECORD_USERINFO] (state,data){
+		state.userInfo = data;
+	},
 	[SET_NAME] (state,data){
 		state.name = data;
 	},

@@ -16,17 +16,17 @@ export default {
   data () {
     return {
       navList: [{
-        name: '人气菜肴',
-        url: 'http://static.meishichina.com/v6/img/zhen/r02.jpg'
+        name: '进口专区',
+        url: '/static/images/nav-2.png'
       },{
-        name: '家常菜谱',
-        url: 'http://static.meishichina.com/v6/img/zhen/r07.jpg'
+        name: '新疆葡萄',
+        url: '/static/images/nav-3.png'
       },{
-        name: '烘焙大全',
-        url: 'http://static.meishichina.com/v6/img/zhen/r08.jpg'
+        name: '热带水果',
+        url: '/static/images/nav-1.png'
       },{
-        name: '所有菜式',
-        url: 'http://static.meishichina.com/v6/img/zhen/r10.jpg'
+        name: '水果礼篮',
+        url: '/static/images/nav-4.png'
       }]
     }
   }
@@ -39,16 +39,15 @@ nav{
 nav ul{
 	display: flex;
 	flex-wrap:wrap;
-	padding:0 1rem 1.5rem;
+	padding:.8rem 0;
 }
 nav ul li{
-	padding:1.5rem .8rem 0 .8rem;
 	width: 25%;
 	font-size: .85rem;
 	text-align: center;
 }
 nav ul li img{
-	width: 90%;
+	width: 56%;
   border-radius: 50%;
 }
 nav ul li span{

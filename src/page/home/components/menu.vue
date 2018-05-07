@@ -1,7 +1,7 @@
 <template>
 	<aside class="sidebar">
-		<div class="user" style="background:url(http://img.alicdn.com/tfs/TB1gCf4SpXXXXaPaXXXXXXXXXXX-608-344.png_960x960Q50s50.jpg_.webp)">
-			<img src="http://wwc.alicdn.com/avatar/getAvatar.do?userNick=&width=128&height=128&type=sns&_input_charset=UTF-8" alt="">
+		<div class="user" >
+			<img src="http://img0.imgtn.bdimg.com/it/u=3887522735,1470689622&fm=214&gp=0.jpg" alt="">
 			<div class="user-login" v-if="this.token">
 				<p><span>{{this.name}}</span><a class="fr">退出登录</a></p>
 			</div>
@@ -45,13 +45,16 @@ export default {
 <style scoped>
 .user{
 	padding:1.5rem;
+	background: url(http://www.taopic.com/uploads/allimg/130727/235002-130HFJ04512.jpg)no-repeat;
+	background-size: 100%;
+	background-position: center;
 }
 .user img{
 	width: 5rem;
 	border-radius: 50%;
 }
 .user-login{
-	margin-top: 3rem;
+	margin-top: 1rem;
 	font-size: 1.25rem;
 }
 .list{

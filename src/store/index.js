@@ -9,13 +9,14 @@ Vue.use(Vuex)
 
 const state = {
 	swipers: [],
-	newDishes: [],
+	goodsArea: {},
 	orders: [],
 	addresses: [],
 	sorts: [],
-	// userInfo: null,
+	userInfo: null,
 	name: null,
-	token: null
+	token: false,
+	guess: []
 }
 
 export default new Vuex.Store({

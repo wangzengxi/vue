@@ -27,7 +27,7 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data () {
     return {
-    	sort: ["最新推荐","最新发布","热菜","凉菜","汤羹","主食","小吃","西餐","烘焙","自制食材"]
+    	sort: ["水果礼篮","当季水果","热带水果","水果礼盒","葡萄提子","桔柑类","浆果类","核果","仁果","瓜类","进口水果"]
     }
   },
   computed: {
@@ -37,7 +37,6 @@ export default {
   },
   mounted () {
     this.getSortData(0)
-    // document.querySelector('body').classList.remove('with-panel-left-reveal');
   },
   methods: {
     ...mapActions([

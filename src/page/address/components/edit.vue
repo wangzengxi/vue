@@ -61,6 +61,7 @@ export default {
     ])
   },
   mounted (){
+    this.region = null;
   },
   methods: {
     ...mapActions([

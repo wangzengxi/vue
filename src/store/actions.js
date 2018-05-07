@@ -10,10 +10,11 @@ export default{
 			}
 		})
 	},
-	getNewDishes({commit,state}) {
+	getGoodsArea({commit,state}) {
 		axios.get('/static/mock/home/new.json').then((response) => {
 			if (response.data.list) {
-				commit(types.GET_NEW_DISHES,response.data.list);
+				// console.log(response.data.list)
+				commit(types.GET_GOODSAREA,response.data.list);
 			}
 		})
 	},

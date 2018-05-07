@@ -55,6 +55,7 @@ const router = new Router({
       path: '/order',
       name: 'Order',
       meta: {
+        requireAuth: true,
         index: 1
       },
       component: Order,
@@ -62,6 +63,7 @@ const router = new Router({
       path: '/address',
       name: 'Address',
       meta: {
+        requireAuth: true,
         index: 1
       },
       component: Address
@@ -69,6 +71,7 @@ const router = new Router({
       path: '/favorite',
       name: 'Favorite',
       meta: {
+        requireAuth: true,
         index: 1
       },
       component: Favorite
@@ -76,6 +79,7 @@ const router = new Router({
       path: '/message',
       name: 'Message',
       meta: {
+        requireAuth: true,
         index: 1
       },
       component: Message
@@ -86,7 +90,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(res => res.meta.requireAuth)) {
-    if (store.state.userInfo) { //判断是否已登录
+    if (store.state.token) { //判断是否已登录
       next()
     }else{
       next({

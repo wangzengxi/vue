@@ -1,5 +1,5 @@
 <template>
-	<div class="gotop" @click="gotop()">
+	<div class="gotop" @click="gotop()" v-show="isShow">
 		<img src="http://static.meishichina.com/v6/img/wap_a/gotop.png" alt="gotop">
 	</div>
 </template>
@@ -8,32 +8,43 @@
 export default {
   data () {
     return {
-      scrollTop: 0,
-      viewHeight: 0,
-      obj: null
+      isShow: true,
+      osTop: 0,
+      timer: null
+    }
+  },
+  props:([
+    'scrollTop'
+  ]),
+  computed:{
+    viewHeight(){
+      return document.body.clientHeight;
     }
   },
   mounted () {
-    document.querySelector('.content').addEventListener('scroll', () => {
-      this.obj = document.querySelector('.gotop');
-      this.scrollTop = document.querySelector('.content').scrollTop;
-      this.viewHeight = document.body.clientHeight;
-      this.scrollTop > this.viewHeight ? this.obj.style.display = 'block' : this.obj.style.display = 'none';
-
-    })
   },
   methods: {
   	gotop () {
-  	  document.querySelector('.content').scrollTop = 0;
+      this.timer = setInterval(()=>{
+        this.osTop = this.osTop-100;
+        let peed = Math.floor(-this.osTop/10)
+        document.querySelector('.content').scrollTop = this.osTop + peed;
+        if (this.osTop <=0)  clearInterval(this.timer);
+      },30)
   	}
+  },
+  watch: {
+    scrollTop(){
+      this.isShow = this.scrollTop > this.viewHeight;
+      this.osTop = this.scrollTop;
+    }
   }
 }
 </script>
 
 <style scoped>
 .gotop{
-	display: none;
-	position: fixed;
+	position: absolute;
 	right: 3rem;bottom:3rem;
 	width: 3.5rem;
 }

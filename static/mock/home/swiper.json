@@ -4,27 +4,23 @@
 	"list": [
 		{
 			"name": "banner-1",
-			"img": "http://i3.meishichina.com/attachment/mofang/2018/04/02/20180402152263900720313.jpg",
+			"src": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=748708408,1773773117&fm=27&gp=0.jpg",
 			"url": "www.baidu.com"
 		},{
 			"name": "banner-2",
-			"img": "http://i3.meishichina.com/attachment/mofang/2018/03/05/20180305152021698319513.jpg",
+			"src": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2766429756,159302457&fm=27&gp=0.jpg",
 			"url": "www.baidu.com"
 		},{
 			"name": "banner-3",
-			"img": "https://i3.meishichina.com/attachment/mofang/2018/04/17/20180417152395945625213.jpg",
+			"src": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3727568390,1293296517&fm=15&gp=0.jpg",
 			"url": "www.baidu.com"
 		},{
 			"name": "banner-4",
-			"img": "https://i3.meishichina.com/attachment/mofang/2018/04/16/20180416152387070846213.jpg",
+			"src": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1667603636,306637610&fm=15&gp=0.jpg",
 			"url": "www.baidu.com"
 		},{
 			"name": "banner-5",
-			"img": "https://i3.meishichina.com/attachment/mofang/2018/04/11/20180411152341505575413.jpg",
-			"url": "www.baidu.com"
-		},{
-			"name": "banner-6",
-			"img": "https://i3.meishichina.com/attachment/mofang/2018/04/17/20180417152395304914913.jpg",
+			"src": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=523465311,3802706049&fm=15&gp=0.jpg",
 			"url": "www.baidu.com"
 		}]
 }

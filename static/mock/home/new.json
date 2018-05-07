@@ -1,46 +1,63 @@
 {
 	"code": "0",
 	"message": "请求成功!",
-	"list": [
-		{
-			"name": "一杯柠檬茶",
-			"id": "new-1",
-			"img": "https://i3.meishichina.com/attachment/recipe/2018/04/12/20180412152351968370413.jpg@!c640",
-			"url": ""
-		},{
-    		"name": "琥珀花生",
-    		"id": "new-1",
-    		"img": "https://i3.meishichina.com/attachment/recipe/2018/04/12/20180412152351960145713.jpg@!c640",
-    		"url": ""
-    	},{
-    		"name": "韭菜木耳鸡蛋虾皮蒸饺",
-    		"id": "new-1",
-    		"img": "https://i3.meishichina.com/attachment/recipe/2018/04/12/20180412152351918515313.jpg@!c640",
-    		"url": ""
-    	},{
-    		"name": "卷三丝",
-    		"id": "new-1",
-    		"img": "https://i3.meishichina.com/attachment/recipe/2018/04/12/20180412152351510076313.jpg@!c640",
-    		"url": ""
-    	},{
-    		"name": "凉拌莴笋叶",
-    		"id": "new-1",
-    		"img": "https://i3.meishichina.com/attachment/recipe/2018/04/12/20180412152351211613313.jpg@!c640",
-    		"url": ""
-    	},{
-    		"name": "辣子鸡",
-    		"id": "new-1",
-    		"img": "https://i3.meishichina.com/attachment/recipe/2018/04/12/20180412152351492431813.jpg@!c640",
-    		"url": ""
-    	},{
-    		"name": "蒜蓉生蚝",
-    		"id": "new-1",
-    		"img": "https://i3.meishichina.com/attachment/recipe/2018/04/12/20180412152351109988013.jpg@!c640",
-    		"url": ""
-    	},{
-    		"name": "蘑菇炒肉片",
-    		"id": "new-1",
-    		"img": "https://i3.meishichina.com/attachment/recipe/2018/04/12/20180412152351231273113.jpg@!c640",
-    		"url": ""
-    	}]
+    "list": {
+        "apple": {
+            "head": {
+                "name": "",
+                "id": "",
+                "img": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=523465311,3802706049&fm=15&gp=0.jpg",
+                "url": ""
+            },
+            "list": [
+            {
+                "name": "优选新疆库尔勒香梨",
+                "id": "new-1",
+                "img": "https://imgqn2.fruitday.com/images/2018-02-14/725ce502bb2d1b55b1951adb22153295.jpg",
+                "url": ""
+            },{
+                "name": "美国华盛顿脆蛇果",
+                "id": "new-1",
+                "img": "https://imgqn2.fruitday.com/images/2018-03-07/d72b849b461c08d991c265df00a1bfde.jpg",
+                "url": ""
+            }]
+        },
+        "hot":{
+            "list": [{
+                "name": "",
+                "id": "",
+                "img": "http://www.xianguozhijia.com/data/afficheimg/1452326120976397741.jpg",
+                "url": ""
+            },{
+                "name": "",
+                "id": "",
+                "img": "http://img07.yiguoimg.com/d/others/180313/9288720244417645.jpg",
+                "url": ""
+            },{
+                "name": "",
+                "id": "",
+                "img": "http://img05.yiguoimg.com/d/others/180313/9288720243139693.jpg",
+                "url": ""
+            }]
+        },
+        "activity": {
+            "name": "新人注册优惠",
+            "id": "",
+            "img": "https://imgqn2.fruitday.com/images/2018-03-26/4e1961e2625d6bdfff382b8b38ed7186.jpg",
+            "url": ""
+        },
+        "banner":{
+            "list": [{
+                "name": "",
+                "id": "",
+                "img": "http://img06.yiguoimg.com/e/others/170308/9288704990814824.jpg",
+                "url": ""
+            },{
+                "name": "",
+                "id": "",
+                "img": "http://img07.yiguoimg.com/e/others/160304/9288692715855972.jpg",
+                "url": ""
+            }]
+        }
+    }
 }
