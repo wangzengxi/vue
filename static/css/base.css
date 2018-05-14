@@ -516,7 +516,7 @@ body.with-panel-left-reveal .panel-overlay,body.with-panel-left-reveal .panel-re
 
 .field {
   overflow: hidden;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 /*.field a {
   color:#008cff;
@@ -525,7 +525,8 @@ body.with-panel-left-reveal .panel-overlay,body.with-panel-left-reveal .panel-re
 input[type="text"],
 input[type="email"],
 input[type="number"],
-input[type="password"] {
+input[type="password"],
+input[type="phone"] {
   padding: 0.2rem 0.5rem;
   width: 100%;
   height: 2.5rem;
@@ -537,7 +538,8 @@ input[type="password"] {
 
 .field input[type="text"]:focus,
 .field input[type="email"]:focus,
-.field input[type="password"]:focus {
+.field input[type="password"]:focus,
+.field input[type="phone"]:focus {
   border: 1px solid #bf5802;
 }
 
@@ -555,19 +557,20 @@ input[type="password"] {
   -moz-appearance: none;
   -ms-appearance: none;
   appearance: none;
-  background: none;
+  background: #fff;
   padding: 0 0.5rem;
   margin: 0;
   width: 100%;
   height: 2.5rem;
   white-space: nowrap;
-  position: relative;
   text-overflow: ellipsis;
   font-size: 1.2rem;
   font-family: inherit;
   cursor: pointer;
 }
-
+.button:active{
+  background:rgba(0,0,0,.2);
+}
 .button-fill {}
 
 .button-success {

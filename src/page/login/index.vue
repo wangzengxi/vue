@@ -1,43 +1,43 @@
 <template>
-	<div class="page-group login">
-		<div class="page">
-			<header class="bar bar-nav">
-				<router-link :to='{name:"Home"}' class="fl"><span class="iconfont icon-back_android"></span></router-link>
-				<h1 class="title">登录</h1>
-			</header>
-			<div class="content">
-				<div style="text-align:center;padding-top:2rem;">
-					<img src="../../assets/timg.jpg" style="width:6rem;">
-				</div>
-				<div class="form">
-					<form method="post" id="login">
-						<div class="field">
-							<input name="email" id="email" type="email" v-model="userName" placeholder="邮箱" autofocus />
-						</div>
-						<div class="field">
-							<input name="password" type="password" v-model="passWord" placeholder="密码" v-if="passBoxShow" />
-							<input name="password" type="text" v-model="passWord"  placeholder="密码" v-else />
-							<div class="password-hide-show" @click="passwordHideShow">
-								<span class="iconfont icon-password_hide" v-if="passBoxShow"></span>
-								<span class="iconfont icon-password_show" v-else></span>
-							</div>
-						</div>
-						<div class="field">
-							<router-link :to='{name:""}' class="fr forget-pass" style="color:#008cff;" id="forgetPassword">忘记密码?</router-link>
-						</div>
-						<div class="field">
-							<input type="button" class="button button-success" @click="mobileLogin " value="登录">
-						</div>
-						<div class="field">
-							<router-link :to='{name:"Register"}' class="button">新用户注册</router-link>
-						</div> 
-					</form>
-				</div>
-			</div>
-			<footer>
-				
-			</footer>
-		</div>
+    <div class="page-group login">
+        <div class="page">
+            <header class="bar bar-nav">
+                <router-link :to='{name:"Home"}' class="fl"><span class="iconfont icon-back_android"></span></router-link>
+                <h1 class="title">登录</h1>
+            </header>
+            <div class="content">
+                <div style="text-align:center;padding-top:2rem;">
+                    <img src="../../assets/timg.jpg" style="width:6rem;">
+                </div>
+                <div class="form">
+                    <form method="post" id="login">
+                        <div class="field">
+                            <input name="email" id="email" type="email" v-model="loginInfo.loginName" placeholder="邮箱" autofocus />
+                        </div>
+                        <div class="field">
+                            <input name="password" type="password" v-model="loginInfo.loginPwd" placeholder="密码" v-if="passBoxShow" />
+                            <input name="password" type="text" v-model="loginInfo.loginPwd"  placeholder="密码" v-else />
+                            <div class="password-hide-show" @click="passwordHideShow">
+                                <span class="iconfont icon-password_hide" v-if="passBoxShow"></span>
+                                <span class="iconfont icon-password_show" v-else></span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <router-link :to='{name:""}' class="fr forget-pass" style="color:#008cff;" id="forgetPassword">忘记密码?</router-link>
+                        </div>
+                        <div class="field">
+                            <input type="button" class="button button-success" @click="mobileLogin " value="登录">
+                        </div>
+                        <div class="field">
+                            <router-link :to='{name:"Register"}' class="button">新用户注册</router-link>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+            <footer>
+                
+            </footer>
+        </div>
     </div>
 </template>
 
@@ -46,9 +46,10 @@ import { mapState, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      userInfo: null,
-      userName: null,
-      passWord: null,
+      loginInfo: {
+        loginName: null,
+        loginPwd: null
+      },
       passBoxShow: true
     }
   },
@@ -61,7 +62,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'userLogin'
+      'setUserInfo'
     ]),
     back () {
       this.$router.go(-1);
@@ -70,42 +71,63 @@ export default {
       this.passBoxShow = !this.passBoxShow;
     },
     mobileLogin () {
-      // let userInfo = {'name': this.userName, 'password': this.passWord}
-      var formData = new FormData()
-      formData.append('username', this.userName);
-      formData.append('password', this.passWord);
-      if(this.userName != null && this.passWord != null){
-        this.userLogin(formData)
-        // console.log(1,userInfo)
+      if(this.verifyLoginName () && this.verifyLoginPwd()){
+        var data = JSON.stringify(this.loginInfo);
+        this.$http.post('http://192.168.10.185:3000/login', data).then((response) => {
+          if (response.status === 200) {
+          	console.log(response)
+            if (response.data.code === 0) {
+              this.setUserInfo(response.data.result)
+              this.$router.push({path: '/'});
+            }
+          }else{
+            this.$Prompt.show({state:'failed',text:'网络错误！'})
+          }
+        }).catch((error) => {
+          console.log(error)
+        })
       }else{
-        // console.log(2,userInfo)
+        return;
+      }
+    },
+    verifyLoginName () {
+      if (this.loginInfo.loginName === '' || this.loginInfo.loginName === null) {
+        this.$Prompt.show({state: 'failed', text: '用户名不能为空！'})
+      } else{
+        return true;
+      }
+    },
+    verifyLoginPwd () {
+      if (this.loginInfo.loginPwd ==='' || this.loginInfo.loginPwd === null) {
+        this.$Prompt.show({state: 'failed', text: '密码不能为空！'})
+      } else{
+        return true;
       }
     }
   }
-  
 }
 </script>
 
 <style scoped>
 .facebook-login{
-	background: #4f68a8;
-	line-height: 2.5rem;
-	color: #fff;
+    background: #4f68a8;
+    line-height: 2.5rem;
+    color: #fff;
 }
 .field{
-	position: relative;
+    position: relative;
 }
 input[type="text"],
 input[type="password"] {
-  padding: 0.2rem 2.5rem 0.2rem 0.5rem;
+    padding: 0.2rem 2.5rem 0.2rem 0.5rem;
 }
 .password-hide-show{
-	position: absolute;
-	top: 0;right: 0;bottom:0;
-	padding:0 .6rem;
+    position: absolute;
+    top: 0;right: 0;bottom:0;
+    padding:0 .6rem;
 }
 .password-hide-show span{
-	line-height: 2.6rem;
-	font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-size: 1.6rem;
 }
 </style>

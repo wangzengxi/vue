@@ -10,6 +10,8 @@ import '../static/js/base.js'
 import '../static/css/base.css'
 import store from './store/index.js'
 
+import Prompt from '@/components/prompt/index.js'
+Vue.use(Prompt)
 Vue.prototype.$http = axios
 // Vue.use(Vuex)
 Vue.config.productionTip = false

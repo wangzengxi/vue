@@ -1,54 +1,53 @@
 <template>
-	<div class="page-group address">
-		<div class="page">
-			<header class="bar bar-nav">
-				<span @click="back" class="fl iconfont icon-back_android"></span>
-				<h1 class="title">收货地址管理</h1>
-				<span @click="refresh" class="fr iconfont icon-refresh"></span>
-			</header>
-			<div class="content">
-				<section class="address-list">
-					<div v-for="(value,index) in addresses" @click="selectAddress(index)" :class="value.code == 0 ? 'address-info active' : 'address-info'" >
-						<div class="font-1">
-							<label>收货人：</label>
-							<label name="name">{{value.name}}</label>
-							<label name="phone">{{value.phone}}</label>
-						</div>
-						<div class="font-2">
-							<label>收货地址：</label>
-							<label name="address">{{value.address}}</label>
-						</div>
-						<label class="right-icon iconfont icon-check"></label>
-					</div>
-				</section>
-			</div>
-			<footer class="bar bar-footer"><input type="button" @click="addShow" class="open-panel button b-ff5000" value="新增地址"></footer>
-		</div>
-		<v-edit :isAddShow="isAddShow" @addHide="addShow"></v-edit>
-	</div>
+    <div class="page-group address">
+        <div class="page">
+            <header class="bar bar-nav">
+                <span @click="back" class="fl iconfont icon-back_android"></span>
+                <h1 class="title">收货地址管理</h1>
+                <span @click="refresh" class="fr iconfont icon-refresh"></span>
+            </header>
+            <div class="content">
+                <section class="address-list">
+                    <div v-for="(value,index) in addressList" @click="selectAddress(index)" :class="value.code == 0 ? 'address-info active' : 'address-info'" :key="value.addressId">
+                        <div class="font-1">
+                            <label>收货人：</label>
+                            <label name="name">{{value.userName}}</label>
+                            <label name="phone">{{value.userPhone}}</label>
+                        </div>
+                        <div class="font-2">
+                            <label>收货地址：</label>
+                            <label name="address">{{value.province}}{{value.city}}{{value.area}}{{value.user_address}}</label>
+                        </div>
+                        <label class="right-icon iconfont icon-check"></label>
+                    </div>
+                </section>
+            </div>
+            <footer class="bar bar-footer"><input type="button" @click="addShow" class="open-panel button b-ff5000" value="新增地址"></footer>
+        </div>
+        <v-edit :isAddShow="isAddShow" @addHide="addShow"></v-edit>
+    </div>
 </template>
 
 <script>
-import { mapState, mapActions} from 'vuex'
 import vEdit from './components/edit.vue'
 export default {
   data () {
     return {
-      isAddShow: false
+      isAddShow: false,
+      addressList: []
     }
   },
-  computed: {
-    ...mapState([
-      'addresses'
-    ])
-  },
   mounted (){
-  	this.getAddress();
+      this.getAddress();
   },
   methods: {
-    ...mapActions([
-      'getAddress'
-    ]),
+    getAddress () {
+      let id = 1;
+      this.$http.get ('http://192.168.10.185:3000/address/getList?userId='+ id).then((response) => {
+        console.log(response.data)
+        this.addressList = response.data.result;
+      })
+    },
     back () {
       this.$router.go(-1);
     },
@@ -58,7 +57,7 @@ export default {
     selectAddress (index) {
       let list = document.querySelectorAll('.address-info');
       for (var i = 0; i < list.length; i++) {
-      	list[i].classList.remove('active');
+          list[i].classList.remove('active');
       }
       list[index].classList.add('active');
     },
@@ -67,7 +66,7 @@ export default {
     }
   },
   components: {
-  	'v-edit': vEdit
+      'v-edit': vEdit
   }
 }
 </script>
@@ -76,57 +75,57 @@ export default {
 header{
 }
 .content{
-	padding-bottom: 3rem;
+    padding-bottom: 3rem;
 }
 .address-list{
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
 .address-info{
-	position: relative;
-	padding:1rem 3.5rem 1rem 1rem;
-	background: #fff;
-	border-top: 1px solid #ccc;
-	color:#666;
+    position: relative;
+    padding:1rem 3.5rem 1rem 1rem;
+    background: #fff;
+    border-top: 1px solid #ccc;
+    color:#666;
 }
 .address-list .address-info:first-child{
-	border:none;
+    border:none;
 }
 .address-info.active{
-	background: #5e6b85;
-	color:#fff;
+    background: #5e6b85;
+    color:#fff;
 }
 .address-info.active .right-icon{
-	visibility: visible;
+    visibility: visible;
 }
 .font-1{
-	margin-bottom: .5rem;
-	font-size: 1.2rem;
-	font-weight: 600;
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 .font-2{
-	font-size: 1rem;
+    font-size: 1rem;
 }
 label[name="phone"]{
-	float: right;
+    float: right;
 }
 
 .right-icon{
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	visibility: hidden;
-	margin:auto 1rem auto 0;
-	width: 2rem;
-	height: 2rem;
-	line-height: 2rem;
-	font-size: 1.45rem;
-	font-weight: 500;
-	text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    margin:auto 1rem auto 0;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1.45rem;
+    font-weight: 500;
+    text-align: center;
 }
 
 footer input{
-	height: 100%;
+    height: 100%;
 }
 
 </style>

@@ -26,13 +26,6 @@ export default{
 			}
 		})
 	},
-	getAddress({commit,state}) {
-		axios.get('./static/mock/address.json').then((response) => {
-			if (response.data.list) {
-				commit(types.GET_ADDRESS,response.data.list)
-			}
-		})
-	},
 	getSortData({commit,state},id) {
 		axios.get('./static/mock/sort/'+id+'.json').then((response) => {
 			if (response.data.list) {
@@ -40,18 +33,9 @@ export default{
 			}
 		})
 	},
-	userLogin({commit},userInfo) {
-		axios.post('http://localhost:8008/login', userInfo).then((response) => {
-			console.log(response.data)
-			if(response.data.status == 0) {
-				commit(types.SET_NAME,response.data.title);
-				commit(types.SET_TOKEM,true);
-			}else{
-
-			}
-		}).catch((error) => {
-			console.log(error)
-		})
+	setUserInfo({commit},data) {
+       commit(types.RECORD_USERINFO,data)
+       commit(types.SET_TOKEM,true)
 	},
 	FedLogOut({commit}) {
 

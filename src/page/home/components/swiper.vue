@@ -1,8 +1,8 @@
 <template>
-	<div class="swiper">
+    <div class="swiper">
         <ul class="carousel" ref="carousel" :style="{width:(len*100)+'%', transform:`translateX(-${activeIndex*100/len}%)`,transition:isResetIndex ? '' : `transform ${transitionInterval/1000}s`}" @touchstart="touch" @touchmove="touch" @touchend="touch">
-            <li v-for="(img,index) in imgsComputed" :style="{'width':(100/len) + '%'}">
-	            	<img :src="(img.src)" :alt="img.name"><!-- 第一次加载imgsComputed,img的src等于undefined -->
+            <li v-for="(value,index) in imgsComputed" :style="{'width':(100/len) + '%'}" :key="index">
+                <img :src="(value.src)" :alt="value.name"><!-- 第一次加载imgsComputed,img的src等于undefined -->
             </li>
         </ul>
         <p class="index">

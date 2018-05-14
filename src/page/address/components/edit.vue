@@ -9,20 +9,20 @@
 			<section class="address-list">
 				<div class="field">
 					省/市/区(县)
-					<p class="region" @click="selectRegion">{{region}}</p>
+					<p class="region" @click="selectRegion">{{newAddress.province+newAddress.city+newAddress.area}}</p>
 					<v-divsion :regionShow="regionShow" @selectRegion="selectRegion"></v-divsion>
 				</div>
 				<div class="field">
 					具体地址
-					<input type="text" v-model="specific">
+					<input type="text" v-model="newAddress.specific">
 				</div>
 				<div class="field">
 					收件人姓名
-					<input type="text" v-model="name">
+					<input type="text" v-model="newAddress.name">
 				</div>
 				<div class="field">
 					收件人电话
-					<input type="text" v-model="phone">
+					<input type="text" v-model="newAddress.phone">
 				</div>
 				<div class="field">
 					邮编
@@ -43,12 +43,17 @@ import { mapState, mapActions} from 'vuex'
 export default {
   data() {
     return {
+      newAddress: {
+        userId: '0001',
+        name: null,
+        phone: null,
+        province: null,
+        city: null,
+        area: null,
+        specific: null
+      },
       regionShow: false,
-      name: null,
-      phone: null,
-      region: null,
-      specific: null,
-      newAddress: null
+      
     }
   },
   components:{
@@ -69,15 +74,17 @@ export default {
     addHide(){
       this.$emit('addHide')
     },
-    selectRegion(region){
+    selectRegion(province, city, area){
       if(this.regionShow){
-      	this.region = region;
+      	this.newAddress.province = province;
+        this.newAddress.city = city;
+        this.newAddress.area = area;
+        console.log(province, city, area)
       }
       this.regionShow = !this.regionShow;
     },
     holdAddress(){
-      this.newAddress = {"name": this.name,"phone": this.phone,"address": this.region + this.specific}
-      console.log(this.newAddress)
+      this.$http.post('http://192.168.10.185:3000/addNewAddress', JSON.stringify(this.newAddress))
     }
   },
   watch:{
@@ -109,7 +116,7 @@ header{
     height: 2.5rem;
     background: #fff;
     border: 1px solid #c4c7a0;
-    border-radius: .35rem;
+    border-radius: .25rem;
     line-height: 2rem;
     font-size: 1rem;
 }

@@ -1,14 +1,14 @@
 <template>
-	<nav class="">
-		<ul>
-			<li v-for="list in navList">
-				<a href="">
-					<img :src="list.url" alt="" />
-					<span>{{list.name}}</span>
-				</a>
-			</li>
-		</ul>
-	</nav>
+    <nav class="">
+        <ul>
+            <li v-for="(value, index) in navList" :key="index">
+                <a href="">
+                    <img :src="value.url" alt="" />
+                    <span>{{value.name}}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </template>
 
 <script>
@@ -37,20 +37,20 @@ export default {
 nav{
 }
 nav ul{
-	display: flex;
-	flex-wrap:wrap;
-	padding:.8rem 0;
+    display: flex;
+    flex-wrap:wrap;
+    padding:.8rem 0;
 }
 nav ul li{
-	width: 25%;
-	font-size: .85rem;
-	text-align: center;
+    width: 25%;
+    font-size: .85rem;
+    text-align: center;
 }
 nav ul li img{
-	width: 56%;
-  border-radius: 50%;
+    width: 56%;
+    border-radius: 50%;
 }
 nav ul li span{
-  display: block;
+    display: block;
 }
 </style>
