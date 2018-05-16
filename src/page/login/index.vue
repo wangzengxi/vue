@@ -43,6 +43,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import * as api from '../../api/login.js'
 export default {
   data () {
     return {
@@ -58,11 +59,11 @@ export default {
     ])
   },
   mounted (){
-    
   },
   methods: {
     ...mapActions([
-      'setUserInfo'
+      'setUserInfo',
+      'setToken'
     ]),
     back () {
       this.$router.go(-1);
@@ -72,17 +73,10 @@ export default {
     },
     mobileLogin () {
       if(this.verifyLoginName () && this.verifyLoginPwd()){
-        var data = JSON.stringify(this.loginInfo);
-        this.$http.post('http://192.168.10.185:3000/login', data).then((response) => {
-          if (response.status === 200) {
-          	console.log(response)
-            if (response.data.code === 0) {
-              this.setUserInfo(response.data.result)
-              this.$router.push({path: '/'});
-            }
-          }else{
-            this.$Prompt.show({state:'failed',text:'网络错误！'})
-          }
+        var params = JSON.stringify(this.loginInfo);
+        api.login(params).then(response=>{
+          this.setToken(response.data.result)
+          console.log(response.data)
         }).catch((error) => {
           console.log(error)
         })

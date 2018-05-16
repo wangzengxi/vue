@@ -76,7 +76,7 @@ export default {
     },
     selectRegion(province, city, area){
       if(this.regionShow){
-      	this.newAddress.province = province;
+        this.newAddress.province = province;
         this.newAddress.city = city;
         this.newAddress.area = area;
         console.log(province, city, area)
@@ -84,7 +84,14 @@ export default {
       this.regionShow = !this.regionShow;
     },
     holdAddress(){
-      this.$http.post('http://192.168.10.185:3000/addNewAddress', JSON.stringify(this.newAddress))
+      this.$http.post('/address/add', JSON.stringify(this.newAddress)).then((response) => {
+        if(response.data.code === 0){
+          this.$Prompt.show({state: 'success', text: '添加成功！'});
+          this.addHide()
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   },
   watch:{

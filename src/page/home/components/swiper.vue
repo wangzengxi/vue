@@ -5,9 +5,12 @@
                 <img :src="(value.src)" :alt="value.name"><!-- 第一次加载imgsComputed,img的src等于undefined -->
             </li>
         </ul>
-        <p class="index">
-           {{activeIndex}}/{{(len-2)}}
-        </p>
+        <ol class="index">
+          <li v-for="(index) in len-2" :key="index" :class="index == activeIndex? 'active': ''"></li>
+        </ol>
+       <!--  <p class="index">
+            {{activeIndex}}/{{(len-2)}}
+        </p> -->
     </div>
 </template>
 
@@ -109,5 +112,16 @@ export default {
 .index{
     position: absolute;
     right: 1rem;bottom: 0.5rem;
+    display: flex;
+}
+.index li{
+  margin:0 .25rem;
+  width: .5rem;
+  height: .5rem;
+  background: rgba(255,255,255,.6);
+  border-radius: 50%;
+}
+.index li.active{
+  background: rgba(0, 0, 0, .6)
 }
 </style>

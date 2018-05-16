@@ -4,14 +4,14 @@ import * as types from './mutation-type.js'
 
 export default{
 	getSwiper({commit,state}) {
-		axios.get('/static/mock/home/swiper.json').then((response) => {
+		axios.get('http://localhost:8080/static/mock/home/swiper.json').then((response) => {
 			if (response.data.list) {
 				commit(types.GET_SWIPER,response.data.list);
 			}
 		})
 	},
 	getGoodsArea({commit,state}) {
-		axios.get('/static/mock/home/new.json').then((response) => {
+		axios.get('http://localhost:8080/static/mock/home/new.json').then((response) => {
 			if (response.data.list) {
 				// console.log(response.data.list)
 				commit(types.GET_GOODSAREA,response.data.list);
@@ -19,7 +19,7 @@ export default{
 		})
 	},
 	getOrder({commit,state}) {
-		axios.get('/static/mock/order.json').then((response) => {
+		axios.get('http://localhost:8080/static/mock/order.json').then((response) => {
 			console.log(response.data.list)
 			if (response.data.list) {
 				commit(types.GET_ORDER,response.data.list)
@@ -27,15 +27,15 @@ export default{
 		})
 	},
 	getSortData({commit,state},id) {
-		axios.get('./static/mock/sort/'+id+'.json').then((response) => {
+		axios.get('http://localhost:8080/static/mock/sort/'+id+'.json').then((response) => {
 			if (response.data.list) {
 				commit(types.GET_SORT_DATA,response.data.list)
 			}
 		})
 	},
-	setUserInfo({commit},data) {
-       commit(types.RECORD_USERINFO,data)
-       commit(types.SET_TOKEM,true)
+	setToken({commit}, data) {
+       commit(types.SET_NAME,data.userId)
+       commit(types.SET_TOKEM,data.token)
 	},
 	FedLogOut({commit}) {
 

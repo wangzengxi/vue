@@ -35,7 +35,7 @@ export default {
   },
   methods:{
     getGuess(){
-      axios.get('/static/mock/goods.json').then((response) => {
+      axios.get('http://localhost:8080/static/mock/goods.json').then((response) => {
         this.guess = response.data.list;
         this.getMore(this.pageCode)
     }).catch((error) => {

@@ -2,13 +2,14 @@
     <div class="page-group address">
         <div class="page">
             <header class="bar bar-nav">
-                <span @click="back" class="fl iconfont icon-back_android"></span>
+                <span @click="$router.go(-1)" class="fl iconfont icon-back_android"></span>
                 <h1 class="title">收货地址管理</h1>
-                <span @click="refresh" class="fr iconfont icon-refresh"></span>
+                <!-- <span @click="edit" class="fr iconfont icon-integral" v-if="editShow"></span>
+                <span @click="edit" class="fr iconfont icon-check" v-else></span> -->
             </header>
             <div class="content">
                 <section class="address-list">
-                    <div v-for="(value,index) in addressList" @click="selectAddress(index)" :class="value.code == 0 ? 'address-info active' : 'address-info'" :key="value.addressId">
+                    <div v-for="(value,index) in addressList" @click="selectAddress(index)" :class="value.isDefault == 1 ? 'address-info active' : 'address-info'" :key="value.addressId">
                         <div class="font-1">
                             <label>收货人：</label>
                             <label name="name">{{value.userName}}</label>
@@ -18,7 +19,10 @@
                             <label>收货地址：</label>
                             <label name="address">{{value.province}}{{value.city}}{{value.area}}{{value.user_address}}</label>
                         </div>
-                        <label class="right-icon iconfont icon-check"></label>
+                        <div class="right-icon">
+                          <label class="iconfont icon-check" v-show="editShow"></label>
+                        </div>
+                        
                     </div>
                 </section>
             </div>
@@ -34,7 +38,8 @@ export default {
   data () {
     return {
       isAddShow: false,
-      addressList: []
+      addressList: [],
+      editShow: true
     }
   },
   mounted (){
@@ -43,16 +48,13 @@ export default {
   methods: {
     getAddress () {
       let id = 1;
-      this.$http.get ('http://192.168.10.185:3000/address/getList?userId='+ id).then((response) => {
+      this.$http.get ('/address/getList?userId='+ id).then((response) => {
         console.log(response.data)
         this.addressList = response.data.result;
       })
     },
-    back () {
-      this.$router.go(-1);
-    },
-    refresh () {
-      this.$router.go(0);
+    edit () {
+      this.editShow = !this.editShow;
     },
     selectAddress (index) {
       let list = document.querySelectorAll('.address-info');
@@ -114,16 +116,20 @@ label[name="phone"]{
     top: 0;
     right: 0;
     bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     visibility: hidden;
     margin:auto 1rem auto 0;
     width: 2rem;
-    height: 2rem;
+    /*height: 2rem;*/
     line-height: 2rem;
     font-size: 1.45rem;
     font-weight: 500;
     text-align: center;
 }
-
+.right-icon label{
+}
 footer input{
     height: 100%;
 }
